@@ -8,8 +8,8 @@ LABEL "alpine.version"=3.5 \
 
 ENV JAVA_HOME=/usr/lib/jvm/default-jvm/jre
 
-RUN apk upgrade --update-cache; \
-    apk add openjdk8-jre; \
+RUN apk upgrade --update-cache && \
+    apk add openjdk8-jre && \
     rm -rf /tmp/* /var/cache/apk/*
 
 CMD ["java", "-version"]
