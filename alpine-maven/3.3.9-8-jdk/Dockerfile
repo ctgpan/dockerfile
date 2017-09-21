@@ -6,7 +6,7 @@ LABEL "alpine.version"=3.6 \
       "jdk"=openjdk8 \
 	  "jdk.version"="1.8.0_131" \
 	  "maven.version"=3.3.9 \
-	  "maven.repository"="${user.home}/.m2/repository"
+	  "maven.repository"="user.home/.m2/repository"
 
 # ADD repositories /etc/apk/repositories
 	
