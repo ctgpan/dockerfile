@@ -3,7 +3,8 @@ FROM alpine:3.6
 MAINTAINER cloudtogo
 
 LABEL "alpine.version"=3.6 \
-      "jre.version"=openjdk8
+      "jdk"=openjdk8 \
+	  "jdk.version"="1.8.0_131"
 
 # ADD repositories /etc/apk/repositories
 
