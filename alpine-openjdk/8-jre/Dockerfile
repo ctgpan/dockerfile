@@ -3,7 +3,8 @@ FROM alpine:3.5
 MAINTAINER cloudtogo
 
 LABEL "alpine.version"=3.5 \
-      "jre.version"=openjdk8-jre
+      "jre"=openjdk8-jre \
+      "jre.version"=1.8.0_121 \
 
 ENV JAVA_HOME=/usr/lib/jvm/default-jvm/jre
 
