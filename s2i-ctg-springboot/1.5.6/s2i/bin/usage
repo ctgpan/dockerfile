@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# inform the user how to use the image
+
+cat <<EOF
+This is the cloudtogo-spring-boot S2I builder image:
+To use it, install S2I: https://github.com/openshift/source-to-image
+EOF
