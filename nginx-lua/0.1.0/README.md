@@ -14,7 +14,7 @@ This docker image's reference:
 $ docker run -d -p 80:80 nginx-lua:0.1.0
 ```
 
-The docker image contains `hello` api and you can get the response like this.
+The docker image contains a `hello` api compiled with Lua and you can get the response like this.
 
 ```
 $ curl -is http://localhost/hello
