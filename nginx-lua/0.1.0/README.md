@@ -1,7 +1,7 @@
 # nginx-lua
 
 
-[![Github repo](https://github.com/danday74/docker-nginx-lua/blob/master/images/github.png?raw=true "Github repo")](https://github.com/ctgpan/dockerfile/tree/master/nginx-lua/0.1.0)
+[![Github repo](http://download.easyicon.net/png/1188783/32/ "Github repo")](https://github.com/ctgpan/dockerfile/tree/master/nginx-lua/0.1.0)
 
 This docker image's reference:
 
@@ -11,5 +11,19 @@ This docker image's reference:
 ## usage
 
 ```
-docker run -d -p 80:80 nginx-lua:0.1.0
+$ docker run -d -p 80:80 nginx-lua:0.1.0
+```
+
+The docker image contains `hello` api and you can get the response like this.
+
+```
+$ curl -is http://localhost/hello
+HTTP/1.1 200 OK
+Server: nginx/1.13.6
+Date: Mon, 06 Nov 2017 09:53:32 GMT
+Content-Type: text/plain
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+Hello,world!
 ```
