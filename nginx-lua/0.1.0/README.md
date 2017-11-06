@@ -1,7 +1,7 @@
 # nginx-lua
 
 
-[![Github repo](http://download.easyicon.net/png/1188783/32/ "Github repo")](https://github.com/ctgpan/dockerfile/tree/master/nginx-lua/0.1.0)
+[![Github repo](images/GitHub.png "Github repo")](https://github.com/ctgpan/dockerfile/tree/master/nginx-lua/0.1.0)
 
 This docker image's reference:
 
