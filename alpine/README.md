@@ -40,3 +40,11 @@ RUN apk upgrade --update-cache; \
 
 CMD ["java", "-version"]
 ```
+
+### git
+
+```
+$ apk update && \
+    apk upgrade && \
+    apk add git
+```

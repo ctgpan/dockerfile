@@ -1,0 +1,26 @@
+#!/bin/sh
+
+if [[ "$1" == "-h" ]]; then
+	exec $STI_SCRIPTS_PATH/usage
+fi
+
+echo "---> Installing application source..."
+cp -Rf /tmp/src/. ./
+
+echo "---> Building application from source..."
+MAVEN_ARGS="package -Dmaven.test.skip=true"
+
+echo "--> # MAVEN_ARGS = $MAVEN_ARGS"
+
+if [ -f "mvnw" ]; then
+  echo "---> Building application with maven wrapper..."
+  ./mvnw $MAVEN_ARGS
+else
+  echo "---> Building application with installed maven..."
+  mvn $MAVEN_ARGS
+fi
+
+ARTIFACT_DIR=${ARTIFACT_DIR:-target}
+echo "--> # ARTIFACT_DIR = $ARTIFACT_DIR"
+
+echo "---> Artifact: $(find $ARTIFACT_DIR -name *.jar)"
