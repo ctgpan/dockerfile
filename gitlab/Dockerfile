@@ -44,7 +44,7 @@ EXPOSE 443 80 22
 VOLUME ["/etc/gitlab", "/var/opt/gitlab", "/var/log/gitlab"]
 
 # Copy assets
-# COPY assets/wrapper /usr/local/bin/
+COPY assets/wrapper /usr/local/bin/
 
 # Wrapper to handle signal, trigger runit and reconfigure GitLab
 CMD ["/usr/local/bin/wrapper"]
