@@ -15,7 +15,7 @@ RUN apt-get update -q \
 # If you run GitLab Enterprise Edition point it to a location where you have downloaded it.
 RUN echo "deb https://packages.gitlab.com/gitlab/gitlab-ce/ubuntu/ `lsb_release -cs` main" > /etc/apt/sources.list.d/gitlab_gitlab-ce.list
 RUN wget -q -O - https://packages.gitlab.com/gpg.key | apt-key add -
-RUN apt-get update && apt-get install gitlab-ce=8.16.4-ce.0
+RUN apt-get update && apt-get install -yq --no-install-recommends gitlab-ce=8.16.4-ce.0
 
 # Manage SSHD through runit
 RUN mkdir -p /opt/gitlab/sv/sshd/supervise \
