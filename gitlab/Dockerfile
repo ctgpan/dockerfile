@@ -1,12 +1,12 @@
-FROM ubuntu:14.04
+FROM cloudtogo/gitlab-ce:8.16.4.1
 MAINTAINER <CloudToGo>
 
-# Install required packages
-RUN apt-get update
-RUN apt-get install -y curl openssh-server ca-certificates
-RUN apt-get install -y postfix
-RUN curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
-RUN apt-get install gitlab-ce=8.16.4-ce.0
+# COPY gitlab-ce_8.16.4-ce.0_amd64.deb /home/
+
+RUN gitlab-ctl reconfigure
+
+#   apt-get install gitlab-ce=8.16.4-ce.0
+#    cd /home && dpkg -i gitlab-ce_8.16.4-ce.0_amd64.deb && \
 
 # Expose web & ssh
 EXPOSE 443 80 22
