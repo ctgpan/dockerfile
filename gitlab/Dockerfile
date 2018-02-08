@@ -3,6 +3,7 @@ MAINTAINER <CloudToGo>
 
 # COPY gitlab-ce_8.16.4-ce.0_amd64.deb /home/
 
+RUN apt-get update
 RUN apt-get install curl 
 RUN apt-get install openssh-server 
 RUN apt-get install ca-certificates 
