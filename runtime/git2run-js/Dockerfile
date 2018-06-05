@@ -2,8 +2,6 @@ FROM node:9-alpine
 
 MAINTAINER <CloudToGo>
 
-COPY default.conf /etc/nginx/conf.d/default.conf
-
 # https://hackerlite.xyz/2017/09/18/alpine-docker-image-with-node-sass/
 
 RUN apk update && \
@@ -35,6 +33,8 @@ RUN touch $HOME/.npmrc && echo "sass_binary_cache=${SASS_BINARY_PATH}" >> $HOME/
 ENV SKIP_SASS_BINARY_DOWNLOAD_FOR_CI true
 ENV SKIP_NODE_SASS_TESTS true
 ENV PORT=80
+
+COPY default.conf /etc/nginx/conf.d/default.conf
 
 WORKDIR /home
 
