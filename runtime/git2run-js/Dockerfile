@@ -8,8 +8,7 @@ RUN apk update && \
     apk upgrade && \
     apk add git g++ gcc libgcc libstdc++ linux-headers make python nginx && \
     apk update && \
-    mkdir -p /run/nginx && \
-    chmod +x /home/startup.sh
+    mkdir -p /run/nginx
 
 # install libsass
 RUN git clone https://github.com/sass/sassc && cd sassc && \
