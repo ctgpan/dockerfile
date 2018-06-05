@@ -12,8 +12,8 @@ demo_folder=/home/demo
 error_folder=/home/error
 html_folder=/home/www
 
-vue_modules=${demo_folder}/vue/****
-angular_modules=${demo_folder}/angular/****
+vue_modules=${demo_folder}/vue/
+angular_modules=${demo_folder}/angular/
 
 # 判断代码库使用的框架：vue, angular, react
 # 前端：工程中包含 package.json 文件
@@ -31,14 +31,6 @@ function getStructure() {
     fi
 }
 
-# 已存在项目处理
-function getDemo(){
-    if [ $1 = "https://github.com/bailicangdu/vue2-elm.git" ]; then echo "vue2-elm";
-    elif [ $1 = "" ]; then echo "";
-    else echo 0;
-    fi
-}
-
 if [ ! -n "$gitUrl" ]; then
     echo ""
     echo "Error: The git url does not exist."
@@ -47,12 +39,30 @@ if [ ! -n "$gitUrl" ]; then
 fi
 
 if [ ! -d ${demo_folder} ]; then mkdir -p ${demo_folder}; fi
+if [ ! -d ${html_folder} ]; then mkdir -p ${html_folder}; fi
 if [ -d "./code" ]; then  rm -rf ./code; fi
 
 # 是已缓存的示例库，则直接复制制品到 ${html_folder} 下
 # /home/demo 各示例路径
 # /home/error 异常页面
-# project=`getDemo`
+project_name=${gitUrl##*/}
+project_name=${project_name%.*}
+if [ `ls $demo_folder | grep -w $project_name | wc -l` -eq '1' ]; then
+    echo "project[$project_name] exists: true"
+    cd $demo_folder/$project_name
+    # demo项目已经过验证，会正常启动，并阻塞
+    npm run dev
+    if [ $? -eq 0 ]; then
+        echo "    Successful." > $log_file
+    else
+        # error page
+        echo "ERROR: vue项目 执行失败"
+        rm -rf ${html_folder}/* && cp ${error_folder}/vue.html ${html_folder}/index.html
+        nginx -g "daemon off;"
+    fi
+    exit 0
+fi
+echo "$project_name exists: false"
 
 # 若不是，则克隆代码并复制对应的框架依赖到code目录下
 git clone $gitUrl code # && copy -r *** ./code/
@@ -66,7 +76,7 @@ if [ -f "./package.json" ]; then
         # copy dependency
         npm install
         # 如果运行正常，此处会阻塞，即不会再往后执行
-        npm run dev > $log_file
+        npm run dev
         if [ $? -eq 0 ]; then
             echo "    Successful." > $log_file
         else
@@ -119,5 +129,4 @@ else
     cp -r * ${html_folder}/
 fi
 
-# nginx -g "daemon off;"
-nginx
+nginx -g "daemon off;"

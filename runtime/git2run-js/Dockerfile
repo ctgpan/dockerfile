@@ -39,7 +39,8 @@ COPY demo/        /home/demo/
 COPY error/       /home/error/
 COPY startup.sh   /home/startup.sh
 
-RUN chmod +x /home/startup.sh
+RUN chmod +x /home/startup.sh && \
+    mkdir -p /home/www
 
 WORKDIR /home
 
