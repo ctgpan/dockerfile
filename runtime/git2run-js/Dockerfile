@@ -31,10 +31,18 @@ RUN touch $HOME/.npmrc && echo "sass_binary_cache=${SASS_BINARY_PATH}" >> $HOME/
 
 ENV SKIP_SASS_BINARY_DOWNLOAD_FOR_CI true
 ENV SKIP_NODE_SASS_TESTS true
+
 ENV PORT=80
 
 COPY default.conf /etc/nginx/conf.d/default.conf
+COPY demo/        /home/demo/
+COPY error/       /home/error/
+COPY startup.sh   /home/startup.sh
+
+RUN chmod +x /home/startup.sh
 
 WORKDIR /home
 
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 80
+
+CMD sh startup.sh
