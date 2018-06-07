@@ -109,6 +109,8 @@ if [ ! -n "$gitUrl" ]; then
     exit 2
 fi
 
+echo "Git Url: $gitUrl"
+
 if [ ! -d ${demo_folder} ]; then mkdir -p ${demo_folder}; fi
 if [ ! -d ${html_folder} ]; then mkdir -p ${html_folder}; fi
 if [ -d "./code" ]; then  rm -rf ./code; fi
