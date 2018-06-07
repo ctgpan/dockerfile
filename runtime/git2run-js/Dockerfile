@@ -8,6 +8,7 @@ RUN apk update && \
     apk upgrade && \
     apk add git g++ gcc libgcc libstdc++ linux-headers make python nginx && \
     apk update && \
+    npm -g install yarn \
     mkdir -p /run/nginx
 
 # install libsass

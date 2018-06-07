@@ -41,7 +41,7 @@ function runApp() {
         if [ $type = "vue" ]; then
             if [ $isDemo = false ]; then
                 # copy dependency
-                npm install
+                yarn
             fi
             # 如果运行正常，此处会阻塞，即不会再往后执行
             npm run dev
@@ -98,6 +98,7 @@ function runApp() {
         cp -r * ${html_folder}/
     fi
     echo "start nginx ... "
+    cp ${error_folder}/favicon.ico ${html_folder}/favicon.ico
     nginx -g "daemon off;"
 }
 
